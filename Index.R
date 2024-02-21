@@ -30,3 +30,51 @@ myarray
 
 now<- Sys.time()
 now
+
+install.packages(c("devtools","roxygen2","testthat","rmarkdown","pkgdown","purrr"))
+devtools::has_devel()
+
+usethis::use_git_config(
+  user.name="betullkunt",
+  user.email='betul.kunt@metu.edu.tr'
+)
+usethis::create_github_token()
+gitcreds::gitcreds_set()
+
+getwd()
+
+
+class(now)
+unclass(now)
+
+mil<-1000000
+now-mil
+
+data(iris)
+head(iris)
+?iris
+class(iris)
+class(iris$Sepal.Length)
+str(iris)
+summary(iris)
+iris$Sepal.Length
+iris[1,]
+iris[,1]
+table(iris)
+LogicIndex<- iris[,"Petal.Length"]>5.5
+iris[LogicIndex,]
+
+mean(iris$Sepal.Length)
+sd(iris$Sepal.Length)
+
+MeanAndStd<- function(x){
+  c(mean=mean(x),std=sd(x))
+}
+MeanAndStd(iris$Sepal.Length)
+
+Stats<- aggregate(Sepal.Length~Species,data=iris,FUN = MeanAndStd)
+
+
+plot(iris$Sepal.Length,col=as.numeric(iris$Species),ylab="Sepal length")
+legend('topleft',legend=levels(iris$Species),pch=1:3)
+boxplot(Sepal.Length~Species, data=iris )
